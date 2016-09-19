@@ -10,7 +10,9 @@ public classs KFragment extends Fragment{
   @Nullable
   @Override
   public View onCreateView(LayoutInflater inflator, ViewGroup container, Bundle savedInstanceState){
-    return super.onCreateView(inflater,container,savedInstanceState);
+    //return super.onCreateView(inflater,container,savedInstanceState);
+    View view = inflater.inflate(R.layout.fragment_ke,container,false);
+    return view;
   }
 }
 ```
