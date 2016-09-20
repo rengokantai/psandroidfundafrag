@@ -156,3 +156,18 @@ public void setData(int a,int b){
   this.b=b;
 }
 ```
+####7. Understanding Communication Flow from Fragment to Activity
+#####4. Sending Data to Activity from Fragment Using Interface
+create a interface MyListener.java(with method addTwoNumbers),then, in KFragment.java
+```
+private void sendData(){
+  MyListener m = (MyListener)getActivity();  //hard to memorize
+  m.addTwoNUmbers(a,b);
+}
+```
+in MainActivity.java
+```
+public void addTwoNumbers(int a, int b){
+  int res = a+b;
+}
+```
