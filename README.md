@@ -48,6 +48,7 @@ center a fragment
 change previous code
 ```
 t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
+//add this fragment to preset FrameLayout id. See 5/3 Performing add and remove 02:00
 ```
 
 ####Exploring Fragment Lifecycle
@@ -64,3 +65,27 @@ onAttach(Activity) //deprecated in API23
 Full lifecycle:  
 onCreate(Activity)->onAttach(Fragment)->onAttachAttachment(Activity)->onCreate,onCreateView,onActivityCreated(Fragment)->onStart(Activity)->onStart(Fragment)->onResume(Activity)->onResume(Fragment) 
 Use press back button->onPause(Fragment)->onPause(Activity)->onStop(Fragment)->onDestroyView,onDestroy,onDetach(Fragment)->onDestroy(Activity)
+####5. Playing Around with Fragment Transactions
+#####1. Introduction to Various Types of Fragment Transactions
+transaction type: add remove replace attach detach show hide  
+
+#####3. Performing Add and Remove Transactions
+To avoid repitition, set
+```
+FragmentManager fm;
+@Override
+protected void onCreate(Bundle savedInstanceState){
+  fm.getFragmentManager();
+}
+```
+remove fragment
+```
+KFragment k = (KFragment)manager.findFragmentByTag("kFragment");
+FragmentTransaction t= manager.beginTransaction();
+if(k!=null){
+t.remove(k);
+transaction.commit();
+}else{
+  Toast.makeText(this,"".Toast.LENGTH_SHORT).show();
+}
+```
