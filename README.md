@@ -98,3 +98,8 @@ t.replace(R.id.container,k,"kFragment");
 t.commit();
 ```
 #####5. Playing with Attach and Detach Transactions
+#####6. show/hide
+```
+t.show/hide/attach/detach(k);
+t.commit();
+```
