@@ -39,7 +39,7 @@ KFragment kf = new KFragment();
 FragmentManager fm = getFragmentManager();
 FragementTransaction t = manager.beginTransaction();
 t.add(R.id.main,kf,"kFragment");  //main = MainActivity's layout id
-transaction.commit();
+t.commit();
 ```
 center a fragment
 ```
@@ -84,8 +84,17 @@ KFragment k = (KFragment)manager.findFragmentByTag("kFragment");
 FragmentTransaction t= manager.beginTransaction();
 if(k!=null){
 t.remove(k);
-transaction.commit();
+t.commit();
 }else{
   Toast.makeText(this,"".Toast.LENGTH_SHORT).show();
 }
 ```
+#####4. Exploring Replace Transaction
+code snippet
+```
+KFragment k = new KFragment();
+FragmentTransaction t= manager.beginTransaction();
+t.replace(R.id.container,k,"kFragment");
+t.commit();
+```
+#####5. Playing with Attach and Detach Transactions
