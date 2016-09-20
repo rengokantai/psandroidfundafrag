@@ -134,3 +134,25 @@ onCreateView(LayoutInflater ....{
   ..
 }
 ```
+#####4. Using Fragment Object and Custom Methods to Pass Data
+snippet, MainActivity
+```
+public void sendData(View view){
+  int first = Integer.valueOf(a.getText().toString());
+  int second = Integer.valueOf(a.getText().toString());
+
+  KFragment k = new KFragment();
+  k.setData(first,second);// or pass non-pri type
+  //k.setData(new Klass());
+  FragmentTransaction t= manager.beginTransaction();
+  t.add(R.id.container,k,"kFragment");
+  t.commit();
+}
+```
+snippet KFragment
+```
+public void setData(int a,int b){
+  this.a=a;
+  this.b=b;
+}
+```
