@@ -16,3 +16,7 @@ public classs KFragment extends Fragment{
   }
 }
 ```
+in activity_main.xml, design mode, select custom->KFragment,->click,select @layout/fragment_k
+
+#####3. Getting Familiar with FragmentManager and FragmentTransaction
+FragmentManager - Interface to interact with Fragment objects inside the Activity
