@@ -111,7 +111,7 @@ Pass data from activity to fragment
 - Fragment  
 
 #####3.Using Bundle to pass data
-snippet
+snippet, MainActivity
 ```
 public void sendData(View view){
   int first = Integer.valueOf(a.getText().toString());
@@ -124,5 +124,13 @@ public void sendData(View view){
   FragmentTransaction t= manager.beginTransaction();
   t.add(R.id.container,k,"kFragment");
   t.commit();
+}
+```
+snippet KFragment
+```
+onCreateView(LayoutInflater ....{
+  Bundle b = getArguments();
+  int f = b.getInt("first",0); //0=default
+  ..
 }
 ```
