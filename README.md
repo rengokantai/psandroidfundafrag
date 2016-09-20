@@ -49,3 +49,5 @@ change previous code
 ```
 t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
 ```
+
+####Exploring Fragment Lifecycle
