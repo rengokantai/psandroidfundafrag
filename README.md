@@ -54,7 +54,13 @@ t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
 #####1. Exploring Fragment Lifecycle
 onAttach->onCreate->onCreateView(create a view of fragment)->onActivityCreated->onStart(fragment is visible)->onResume(running state)  
 Use press back button->onPause->onStop(not visible)->onDestroyView(after onCreateView)->onDestroy(release memory)->onDetach(detach from activity)
-
+#####2 Demo
+use
+```
+onAttach(context) //add in API 23
+onAttach(Activity) //deprecated in API23
+```
 #####3. Exploring Fragment Lifecycle in Context of the Activity Lifecycle
 Full lifecycle:  
-onCreate(Activity)->onAttach(Fragment)->onAttachAttachment(Activity)->onCreate,onCreateView,onActivityCreated(Fragment)->onStart(Activity)->onStart(Fragment)->onResume(Activity)->onResume(Fragment)  
+onCreate(Activity)->onAttach(Fragment)->onAttachAttachment(Activity)->onCreate,onCreateView,onActivityCreated(Fragment)->onStart(Activity)->onStart(Fragment)->onResume(Activity)->onResume(Fragment) 
+Use press back button->onPause(Fragment)->onPause(Activity)->onStop(Fragment)->onDestroyView,onDestroy,onDetach(Fragment)->onDestroy(Activity)
