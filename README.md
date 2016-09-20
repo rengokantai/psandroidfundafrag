@@ -103,3 +103,26 @@ t.commit();
 t.show/hide/attach/detach(k);
 t.commit();
 ```
+[reference](http://stackoverflow.com/questions/9156406/whats-the-difference-between-detaching-a-fragment-and-removing-it)
+####06. Sending Data to a Fragment from Parent Activity
+#####1.Intro
+Pass data from activity to fragment
+- Bundle
+- Fragment  
+
+#####3.Using Bundle to pass data
+snippet
+```
+public void sendData(View view){
+  int first = Integer.valueOf(a.getText().toString());
+  int second = Integer.valueOf(a.getText().toString());
+  Bundle b = new Bundle();
+  b.putInt("first",first);
+  b.putInt("second",second);
+  KFragment k = new KFragment();
+  f.setArguments(b);
+  FragmentTransaction t= manager.beginTransaction();
+  t.add(R.id.container,k,"kFragment");
+  t.commit();
+}
+```
