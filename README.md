@@ -192,3 +192,15 @@ step:
 - Pass data from FragmentA to Activity ``` activity.add(x,y)```
 - pass data from Activity to FragmentB ```fragB.addTwoNumbers(x,y)```  
 
+####9. Enabling the Back Button with Backstack
+#####1. Overview
+Default case is:
+- Activity responds to back button
+- Fragments are not aware of back button  
+
+```
+addToBackStack(null)
+addToBackStack(String tag)
+popBackStack()
+popBackStack(String tag,int FLAG)
+```
