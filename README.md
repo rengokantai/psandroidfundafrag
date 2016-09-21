@@ -267,3 +267,12 @@ manager.popBackStack("name",POP_BACK_STACK_INCLUSIVE);  //pop all item until thi
 manager.popBackStack(); //only last one
 ```
 #####5. Making Multiple Changes in a Single FragmentTransaction
+
+```
+t.add(R.id.a,...
+t.add(R.id.b,...
+t.addToBackStack("Add two");
+t.commit();
+```
+####10. Providing Stability to Fragment on Screen Rotation
+#####2. Fragment Lifecycle Behavior on Screen Rotation
