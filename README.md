@@ -208,7 +208,18 @@ popBackStack(String tag,int FLAG)
 in MainActivity.java
 ```
 public class MainActivity extends AppCompatActivity implements OnBackStackChangedListener{
+  protected void onCreate(Bundle savedInstanceState){
+    ...
+    manager.addOnBackStackChangedListener(this);
+  }
   ...
+  public void addFragment(View v){
+    KFragment kf = new KFragment();
+  FragementTransaction t = manager.beginTransaction();
+  t.add(R.id.container,kf,"kFragment");  
+  t.addToBackStack("AddA"); //Note the position, just before commit method
+  t.commit();
+  }
   public void dummyBack(View v){
     manager.popBackStack();
   }
