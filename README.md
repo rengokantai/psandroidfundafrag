@@ -86,7 +86,7 @@ if(k!=null){
 t.remove(k);
 t.commit();
 }else{
-  Toast.makeText(this,"".Toast.LENGTH_SHORT).show();
+  Toast.makeText(this,"".Toast.LENGTH_SHORT).show();//If called in fragment class, this->getActivity()
 }
 ```
 #####4. Exploring Replace Transaction
@@ -276,3 +276,26 @@ t.commit();
 ```
 ####10. Providing Stability to Fragment on Screen Rotation
 #####2. Fragment Lifecycle Behavior on Screen Rotation
+#####4. Impact of Screen Rotation on Views and Variables
+Views do not retain its state on screen rotation:
+- TextView
+- Button  
+
+#####5. How to Restore Back the Fragment's State
+onPause->onSaveInstanceState->onStop
+
+#####6. Providing Stability to Fragment on Screen Rotation
+Fragment.java
+```
+@Override
+public void onSaveInstanceState(Bundle b){
+  super.onSaveInstanceState(b);
+  b.putInt("var",var);
+}
+```
+for retrive, you can put in
+```
+onCreate
+onCreateView
+onActivityCreated
+```
