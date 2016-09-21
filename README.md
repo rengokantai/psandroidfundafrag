@@ -243,3 +243,27 @@ public class MainActivity extends AppCompatActivity implements OnBackStackChange
   }
 }
 ```
+#####3 
+add(even the transaction is "hide", it still count as a add to stack.
+```
+addToBackStack("addA");
+addToBackStack("hideA");
+```
+new method in MainActivity.java
+```
+@Override
+public void onBackPressed(){
+  if(manager.getBackStackEntryCount()>0){
+    manager.popBackStack();
+  }else{
+    super.onBackPressed();
+  }
+}
+```
+pop
+```
+manager.popBackStack("name",0);  //pop all item until this item(not inclusive)
+manager.popBackStack("name",POP_BACK_STACK_INCLUSIVE);  //pop all item until this item(inclusive)
+manager.popBackStack(); //only last one
+```
+#####5. Making Multiple Changes in a Single FragmentTransaction
