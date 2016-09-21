@@ -204,3 +204,31 @@ addToBackStack(String tag)
 popBackStack()
 popBackStack(String tag,int FLAG)
 ```
+#####2
+in MainActivity.java
+```
+public class MainActivity extends AppCompatActivity implements OnBackStackChangedListener{
+  ...
+  public void dummyBack(View v){
+    manager.popBackStack();
+  }
+  
+  public void pop_AddA_Inclusive(View v){
+    manager.popBackStack("AddA",FragmentManager.POP_BACK_STACK_INCLUSIVE);
+  }
+  
+  public void pop_AddB(View v){
+    manager.popBackStack("AddA",0);
+  }
+  
+  @Override
+  public void onBackStackChanged(){
+    int length = manager.getBackStackEntryCount();
+    StringBuilder s = new StringBuilder("");
+    for(int i=length-1;i>0;i--){
+      s.append(manager.getBackStackEntryAt(i).getName());
+    }
+    Log.i(TAG,s.toString());
+  }
+}
+```
