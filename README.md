@@ -120,7 +120,7 @@ public void sendData(View view){
   b.putInt("first",first);
   b.putInt("second",second);
   KFragment k = new KFragment();
-  f.setArguments(b);
+  k.setArguments(b);
   FragmentTransaction t= manager.beginTransaction();
   t.add(R.id.container,k,"kFragment");
   t.commit();
@@ -171,3 +171,24 @@ public void addTwoNumbers(int a, int b){
   int res = a+b;
 }
 ```
+####8. Understanding Inter-fragment Communication
+#####3. Understanding the Data Flow from One Fragment to Another
+similiar to pass data from fragment to activity. just do some change.in MainActivity.java
+```
+public void add(int x,int y){
+  fragB.addTwoNumbers(x,y)
+}
+```
+in FragB.java
+```
+public void addTwoNumbers(int a, int b){
+  int res = a+b;
+}
+```
+#####4. Implementing the Inter-fragment Communication in Project
+step:
+- Create an interface MyListener
+- Implement MyListener in Activity
+- Pass data from FragmentA to Activity ``` activity.add(x,y)```
+- pass data from Activity to FragmentB ```fragB.addTwoNumbers(x,y)```  
+
