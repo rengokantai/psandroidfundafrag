@@ -1,6 +1,12 @@
-## psandroidfundafrag
-###3 Adding the Fragment to an Activity
-####Adding a Fragment to an Activity by XML
+# psandroidfundafrag
+## 2. Introduction
+### 2 Why Fragment
+Reuse the same Fragment across several Activities
+## 3. Adding the Fragment to an Activity
+### 2 Adding a Fragment to an Activity by XML
+steps
+- Create a subclass of Fragment  
+
 create project->empty activity  
 create new java class under java
 ```
@@ -11,7 +17,7 @@ public classs KFragment extends Fragment{
   @Override
   public View onCreateView(LayoutInflater inflator, ViewGroup container, Bundle savedInstanceState){
     //return super.onCreateView(inflater,container,savedInstanceState);
-    View view = inflater.inflate(R.layout.fragment_ke,container,false);
+    View view = inflater.inflate(R.layout.fragment_ke,container,false); //attach to root?
     return view;
   }
 }
@@ -21,7 +27,7 @@ in activity_main.xml, design mode, select custom->KFragment,->click,select @layo
 ####3. Getting Familiar with FragmentManager and FragmentTransaction
 FragmentManager - Interface to interact with Fragment objects inside the Activity
 FragmentTransaction -API for performing a set of Fragment opeaations such as add, remove, replace
-####4. Adding a Fragment to an Activity Programmatically by JAVA
+### 4 Adding a Fragment to an Activity Programmatically by JAVA
 steps:
 - create subclass of Fragment
 - create a layout for Fragment
@@ -51,8 +57,8 @@ t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
 //add this fragment to preset FrameLayout id. See 5/3 Performing add and remove 02:00
 ```
 
-###Exploring Fragment Lifecycle
-####1. Exploring Fragment Lifecycle
+## 5. Exploring Fragment Lifecycle
+### 1 Exploring Fragment Lifecycle
 onAttach->onCreate->onCreateView(create a view of fragment)->onActivityCreated->onStart(fragment is visible)->onResume(running state)  
 Use press back button->onPause->onStop(not visible)->onDestroyView(after onCreateView)->onDestroy(release memory)->onDetach(detach from activity)
 ####2 Demo
