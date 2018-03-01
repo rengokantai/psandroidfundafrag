@@ -64,21 +64,60 @@ t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
 ### 1 Exploring Fragment Lifecycle
 onAttach->onCreate->onCreateView(create a view of fragment)->onActivityCreated->onStart(fragment is visible)->onResume(running state)  
 Use press back button->onPause->onStop(not visible)->onDestroyView(after onCreateView)->onDestroy(release memory)->onDetach(detach from activity)
-####2 Demo
+### 2 Demo: Fragment Lifecycle
 use
 ```
 onAttach(context) //add in API 23
 onAttach(Activity) //deprecated in API23
 ```
-####3. Exploring Fragment Lifecycle in Context of the Activity Lifecycle
+### 3 Exploring Fragment Lifecycle in Context of the Activity Lifecycle
 Full lifecycle:  
 onCreate(Activity)->onAttach(Fragment)->onAttachAttachment(Activity)->onCreate,onCreateView,onActivityCreated(Fragment)->onStart(Activity)->onStart(Fragment)->onResume(Activity)->onResume(Fragment) 
 Use press back button->onPause(Fragment)->onPause(Activity)->onStop(Fragment)->onDestroyView,onDestroy,onDetach(Fragment)->onDestroy(Activity)
-###5. Playing Around with Fragment Transactions
-####1. Introduction to Various Types of Fragment Transactions
+### 4 Demo
+
+### 5 Summary
+onAttach
+- The fragment has been attached to the Activity
+- Provides the reference to the context of Activity
+onCreate
+- Initialize essential components
+onCreateView
+- Fragment draws its User Interface
+- Return
+  - View: Fragments layout root view
+  - Null: If Fragment has no UI
+
+onPause
+- Indication of User leaving the Fragment
+- Fragment is still visible
+- Save the state of Fragment
+
+onStop
+- Fragment is not visible
+- Either host Activity has been stopped or the fragment has been removed and added to back stack
+
+onDestroyView
+- Opposite to onCreateView
+- The View hierarchy of the fragment is removed
+
+onDestroy
+- Final cleanup of Fragment's state
+onDetach
+- Fragment has been disassocited from its hosting Activity
+
+
+## 5. Playing Around with Fragment Transactions
+### 1 Introduction to Various Types of Fragment Transactions
 transaction type: add remove replace attach detach show hide  
 
-####3. Performing Add and Remove Transactions
+### 3 Performing Add and Remove Transactions
+create a frameLayout in MainActivity,set id to container,then
+```
+FragmentA fragmentA = new FragmentA();
+transaction.add(R.id.container,fragmentA,"fragA")
+```
+###### 03:08
 To avoid repitition, set
 ```
 FragmentManager fm;
@@ -89,16 +128,16 @@ protected void onCreate(Bundle savedInstanceState){
 ```
 remove fragment
 ```
-KFragment k = (KFragment)manager.findFragmentByTag("kFragment");
+KFragment k = (KFragment)manager.findFragmentByTag("fragA");
 FragmentTransaction t= manager.beginTransaction();
 if(k!=null){
 t.remove(k);
 t.commit();
 }else{
-  Toast.makeText(this,"".Toast.LENGTH_SHORT).show();//If called in fragment class, this->getActivity()
+  Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();//If called in fragment class, this->getActivity()
 }
 ```
-####4. Exploring Replace Transaction
+### 4 Exploring Replace Transaction
 code snippet
 ```
 KFragment k = new KFragment();
@@ -106,15 +145,18 @@ FragmentTransaction t= manager.beginTransaction();
 t.replace(R.id.container,k,"kFragment");
 t.commit();
 ```
-####5. Playing with Attach and Detach Transactions
-####6. show/hide
+### 5 Playing with Attach and Detach Transactions
+does not perform onDestroy and onDetach method.  
+The fragment is not destroyed, but just not visible.
+### 6 Hiding and Showing a Fragment
+no state change
 ```
 t.show/hide/attach/detach(k);
 t.commit();
 ```
 [reference](http://stackoverflow.com/questions/9156406/whats-the-difference-between-detaching-a-fragment-and-removing-it)
-###06. Sending Data to a Fragment from Parent Activity
-####1.Intro
+## 6. Sending Data to a Fragment from Parent Activity
+### 1 Introduction
 Pass data from activity to fragment
 - Bundle
 - Fragment  
