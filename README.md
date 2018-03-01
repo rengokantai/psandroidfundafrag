@@ -161,10 +161,10 @@ Pass data from activity to fragment
 - Bundle
 - Fragment  
 
-####3.Using Bundle to pass data
+### 3 Using Bundle to Pass Data from Parent Activity to Fragment
 snippet, MainActivity
 ```
-public void sendData(View view){
+public void sendDataToFragment(View view){
   int first = Integer.valueOf(a.getText().toString());
   int second = Integer.valueOf(a.getText().toString());
   Bundle b = new Bundle();
@@ -185,7 +185,7 @@ onCreateView(LayoutInflater ....{
   ..
 }
 ```
-####4. Using Fragment Object and Custom Methods to Pass Data
+### 4 Using Fragment Object and Custom Methods to Pass Data
 snippet, MainActivity
 ```
 public void sendData(View view){
@@ -200,6 +200,7 @@ public void sendData(View view){
   t.commit();
 }
 ```
+### 4 Using Fragment Object and Custom Methods to Pass Data
 snippet KFragment
 ```
 public void setData(int a,int b){
