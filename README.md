@@ -23,29 +23,32 @@ public classs KFragment extends Fragment{
 }
 ```
 in activity_main.xml, design mode, select custom->KFragment,->click,select @layout/fragment_k
-
-####3. Getting Familiar with FragmentManager and FragmentTransaction
+```
+tools:layout="@layout/fragment_hello"/>
+```
+### 3 Getting Familiar with FragmentManager and FragmentTransaction
 FragmentManager - Interface to interact with Fragment objects inside the Activity
 FragmentTransaction -API for performing a set of Fragment opeaations such as add, remove, replace
 ### 4 Adding a Fragment to an Activity Programmatically by JAVA
 steps:
-- create subclass of Fragment
-- create a layout for Fragment
-- link layout with fragment subclass
+- Create subclass of Fragment
+- Create a layout for Fragment
+- Link layout with fragment subclass
+  - Override onCreateView()
 - place the fragment inside an activity
-  - initialize fragmentManager
-  - initilize fragmentTransaction
-  - start add/remove/replace operation
-  - commit the transaction  
+  - Initialize FragmentManager
+  - Initilize FragmentTransaction
+  - Start add/remove/replace operation
+  - Commit the transaction  
 
 MainActivity.java
 ```
-...
+
 KFragment kf = new KFragment();
 FragmentManager fm = getFragmentManager();
-FragementTransaction t = manager.beginTransaction();
-t.add(R.id.main,kf,"kFragment");  //main = MainActivity's layout id
-t.commit();
+FragementTransaction transaction = manager.beginTransaction();
+transaction.add(R.id.main,kf,"kFragment");  //main = MainActivity's layout id
+transaction.commit();
 ```
 center a fragment
 ```
@@ -57,7 +60,7 @@ t.add(R.id.container,kf,"kFragment");  //main = MainActivity's layout id
 //add this fragment to preset FrameLayout id. See 5/3 Performing add and remove 02:00
 ```
 
-## 5. Exploring Fragment Lifecycle
+## 4. Exploring Fragment Lifecycle
 ### 1 Exploring Fragment Lifecycle
 onAttach->onCreate->onCreateView(create a view of fragment)->onActivityCreated->onStart(fragment is visible)->onResume(running state)  
 Use press back button->onPause->onStop(not visible)->onDestroyView(after onCreateView)->onDestroy(release memory)->onDetach(detach from activity)
